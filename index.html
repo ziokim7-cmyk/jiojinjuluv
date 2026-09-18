@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#15110f">
+<title>JIO × JINJU</title>
+<style>
+*{box-sizing:border-box} html,body{margin:0;width:100%;height:100%;background:#0d0b0a;color:#f8f1e7;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;overflow:hidden}
+:root{--gold:#d9bd8a;--cream:#f7efe2;--line:rgba(255,255,255,.22)}
+#app{height:100dvh;position:relative}
+.page{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:max(28px,env(safe-area-inset-top)) 24px max(28px,env(safe-area-inset-bottom));opacity:0;pointer-events:none;transform:translateX(24px);transition:.55s ease;overflow:hidden;background-position:center;background-size:cover}
+.page.active{opacity:1;pointer-events:auto;transform:none}
+.page::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,6,5,.18),rgba(8,6,5,.38) 42%,rgba(8,6,5,.92));z-index:0}
+.page>*{position:relative;z-index:1}
+.p1{background:radial-gradient(circle at 70% 25%,#77584b 0,#2a1f1a 38%,#0d0b0a 80%)}
+.p2{background:radial-gradient(circle at 50% 30%,#604b3f 0,#1b1613 55%,#0d0b0a)}
+.p3{background:linear-gradient(150deg,#34463b,#171b18 55%,#0c0b0a)}
+.p4{background:linear-gradient(145deg,#573c36,#211713 55%,#0c0b0a)}
+.p5{background:radial-gradient(circle at 40% 30%,#6a4a34,#211712 55%,#0c0b0a)}
+.p6,.p10{background:linear-gradient(180deg,#24394b 0,#18232d 42%,#0c0b0a)}
+.p7{background:linear-gradient(145deg,#6b5b4d,#28211c 55%,#0c0b0a)}
+.p8{background:linear-gradient(180deg,#394856,#182029 46%,#0c0b0a)}
+.p9{background:linear-gradient(145deg,#766b5d,#2a211b 55%,#0c0b0a)}
+.p11{background:radial-gradient(circle at 50% 35%,#5c4030,#1c1511 55%,#0c0b0a)}
+.p12{background:radial-gradient(circle at 50% 38%,#40322b,#171210 58%,#080706)}
+.top{position:absolute;top:max(24px,env(safe-area-inset-top));left:24px;right:24px;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.16em;color:#eee1ce}
+.kicker{font-family:Georgia,serif;letter-spacing:.22em;font-size:12px;color:var(--gold);margin-bottom:12px}
+h1,h2{font-family:Georgia,"Times New Roman",serif;margin:0 0 14px;line-height:1.18;font-weight:500}h1{font-size:42px}h2{font-size:31px}
+p{margin:0 0 18px;line-height:1.72;font-size:15px;color:#f1e8dc}
+.note{font-size:13px;color:#d8c9b6}.rule{height:1px;background:var(--line);margin:18px 0}
+.btn{width:100%;border:1px solid rgba(244,225,194,.55);background:rgba(255,255,255,.06);color:#fff;border-radius:999px;padding:16px 18px;font-size:15px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);margin-top:8px}
+.btn:active{transform:scale(.985)}.choices{display:grid;gap:9px}.choice{text-align:left}.choice.ok{border-color:var(--gold);background:rgba(217,189,138,.18)}
+.time{font-family:Georgia,serif;font-size:38px;line-height:1.25;letter-spacing:.04em;color:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 8px}.card{padding:14px 8px;border:1px solid var(--line);border-radius:14px;text-align:center;background:rgba(255,255,255,.06)}.card b{display:block;font-size:11px;color:var(--gold);margin-bottom:6px}.card span{font-size:12px}
+.warning{padding:15px;border-radius:16px;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.18);line-height:1.6;font-size:14px;margin:10px 0}.done{background:rgba(217,189,138,.18);border-color:var(--gold)}
+.lock{text-align:center;font-size:36px;margin-bottom:14px}.center{text-align:center}.signature{font-family:Georgia,serif;color:var(--gold);letter-spacing:.15em}
+#toast{position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);background:#f4eadb;color:#1a1512;padding:12px 18px;border-radius:999px;opacity:0;z-index:50;transition:.3s;font-size:13px;white-space:nowrap}#toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div id="app">
+<section class="page p1 active"><div class="top"><span>1 / 12</span><span>SPECIAL INVITATION</span></div><div class="kicker">JIO × JINJU</div><h1>김지오의<br>프로포즈</h1><p>진주님을 특별한 하루에 초대합니다.</p><button class="btn" onclick="next()">초대장 열기 →</button></section>
+
+<section class="page p2"><div class="top"><span>2 / 12</span><span>TO. JINJU</span></div><h2>진주님,<br>초대장이 도착했습니다.</h2><p>오늘은 평소와 조금 다른 날입니다.<br>지금부터 몇 가지 질문에 답해주세요.<br><br>모든 기억을 통과하면 프로포즈의 시작시간을 알려드리겠습니다.</p><button class="btn" onclick="next()">기억을 시작하기 →</button></section>
+
+<section class="page p3"><div class="top"><span>3 / 12</span><span>OUR MEMORY 01</span></div><div class="kicker">Q.</div><h2>우리가 처음 함께 갔던<br>여행지는?</h2><div class="choices"><button class="btn choice" onclick="wrong()">① 서울</button><button class="btn choice" onclick="correct(this)">② 여수</button><button class="btn choice" onclick="wrong()">③ 제주도</button><button class="btn choice" onclick="wrong()">④ 경주</button></div></section>
+
+<section class="page p4"><div class="top"><span>4 / 12</span><span>OUR MEMORY 02</span></div><div class="kicker">Q.</div><h2>우리가 사귀기로 한<br>날짜는?</h2><div class="choices"><button class="btn choice" onclick="wrong()">① 1월 24일</button><button class="btn choice" onclick="correct(this)">② 2월 4일</button><button class="btn choice" onclick="wrong()">③ 2월 14일</button><button class="btn choice" onclick="wrong()">④ 3월 4일</button></div></section>
+
+<section class="page p5"><div class="top"><span>5 / 12</span><span>OUR MEMORY 03</span></div><div class="kicker">Q.</div><h2>지오가 진주를<br>가장 좋아하는 이유는?</h2><div class="choices"><button class="btn choice" onclick="wrong()">① 착해서</button><button class="btn choice" onclick="wrong()">② 예뻐서</button><button class="btn choice" onclick="wrong()">③ 잘 챙겨줘서</button><button class="btn choice" onclick="correct(this)">④ 그냥.. 다 좋아서</button></div></section>
+
+<section class="page p6"><div class="top"><span>6 / 12</span><span>PROPOSE TIME</span></div><div class="kicker">FINALLY</div><h2>드디어,<br>프로포즈의 시작시간을<br>알려드립니다.</h2><div class="rule"></div><div class="time">2026. 09. 20.<br>18 : 00</div><p class="note" style="margin-top:18px">이 날, 이 시간에 내가 준비한 진짜 이야기가 시작됩니다.</p><button class="btn" onclick="next()">다음 안내 보기 →</button></section>
+
+<section class="page p7"><div class="top"><span>7 / 12</span><span>DRESS CODE</span></div><h2>오늘은 조금 더<br>특별한 모습으로,<br>예쁘게 와주세요 :)</h2><div class="warning"><b>현재 옷차림으로는 참석이 불가능합니다.</b><br>준비해둔 옷으로 환복 후 다음 안내를 확인해주세요.</div><div class="cards"><div class="card"><b>DRESS CODE</b><span>예쁜 옷</span></div><div class="card"><b>SHOES</b><span>편한 신발</span></div><div class="card"><b>ETC</b><span>설레는 마음</span></div></div><button class="btn done" onclick="next()">환복 완료 ✓</button></section>
+
+<section class="page p8"><div class="top"><span>8 / 12</span><span>DESTINATION</span></div><div class="kicker">📍 DESTINATION</div><h2>루미나 더 마루</h2><p>부산 수영구 민락수변로 105<br>10층 루미나 더 마루</p><button class="btn" onclick="window.open('https://map.naver.com/p/search/%EB%A3%A8%EB%AF%B8%EB%82%98%20%EB%8D%94%20%EB%A7%88%EB%A3%A8','_blank')">네이버지도에서 길찾기 →</button><button class="btn" onclick="next()">다음 →</button></section>
+
+<section class="page p9"><div class="top"><span>9 / 12</span><span>A LETTER TO YOU</span></div><div class="kicker">TO. JINJU</div><h2>지금까지의 모든 순간이<br>오늘로 이어진 것 같아.</h2><p>항상 고마워.</p><button class="btn" onclick="next()">계속 읽기 →</button></section>
+
+<section class="page p10"><div class="top"><span>10 / 12</span><span>OUR FUTURE</span></div><h2>앞으로도 지금처럼,</h2><p>더 많이 웃고,<br>더 많이 사랑하고,<br>더 많은 곳을 함께 가자.</p><div class="rule"></div><h2>평생 너와<br>같은 편이고 싶어.</h2><button class="btn" onclick="next()">다음 →</button></section>
+
+<section class="page p11"><div class="top"><span>11 / 12</span><span>THE MOST IMPORTANT</span></div><h2>마지막으로,<br>꼭 전하고 싶은 말이 있어.</h2><p>이건 오늘,<br>직접 만나서 할게.</p><button class="btn" onclick="next()">마지막 페이지 →</button></section>
+
+<section class="page p12"><div class="top"><span>12 / 12</span><span>FOR OUR FOREVER</span></div><div class="center"><div class="lock">🔒</div><h2>아직 열리지 않았습니다.</h2><p>이 페이지는 오늘 직접 만나야 열립니다.</p><div class="rule"></div><p>나머지는 내가 준비하겠습니다.</p><div class="signature">— 김지오</div></div></section>
+</div>
+<div id="toast">다시 생각해봐 😏</div>
+<script>
+let idx=0; const pages=[...document.querySelectorAll('.page')];
+function show(n){pages[idx].classList.remove('active');idx=Math.max(0,Math.min(n,pages.length-1));pages[idx].classList.add('active')}
+function next(){show(idx+1)}
+function wrong(){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1100)}
+function correct(el){el.classList.add('ok');setTimeout(next,500)}
+let x0=null;
+addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+addEventListener('touchend',e=>{if(x0===null)return;let dx=e.changedTouches[0].clientX-x0;if(dx>80&&idx>0)show(idx-1);x0=null},{passive:true});
+</script>
+</body></html>
