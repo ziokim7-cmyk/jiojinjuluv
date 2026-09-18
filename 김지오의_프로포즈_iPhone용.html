@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0b0b0d">
+<title>김지오의 프로포즈</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#0b0b0d;color:#f7f3ed;min-height:100%;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR","Apple SD Gothic Neo",sans-serif}
+button{appearance:none;-webkit-appearance:none;font:inherit}
+.screen{display:none;min-height:100svh;min-height:100vh;padding:70px 22px 35px;align-items:center;justify-content:center}
+.screen.active{display:flex}
+.inner{width:100%;max-width:560px;text-align:center}
+.eyebrow{font-size:11px;letter-spacing:.22em;color:#918d88;margin-bottom:22px}
+h1,h2{font-family:"Apple SD Gothic Neo","Noto Serif KR",serif;font-weight:400;line-height:1.45;margin:0}
+h1{font-size:42px} h2{font-size:30px}
+.gold{color:#d8c3a5}
+p{font-size:15px;line-height:1.9;color:#d8d2ca}
+.btn{display:block;width:100%;max-width:360px;margin:28px auto 0;padding:15px 20px;border:1px solid #77716b;border-radius:999px;background:#121214;color:#f7f3ed}
+.btn:active{background:#eee8df;color:#111}
+.progress{position:absolute;top:28px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.2em;color:#67635f;white-space:nowrap}
+.quiz-card{margin-top:28px;border:1px solid #2d2b2b;border-radius:18px;padding:25px 17px;background:#111113}
+.question{font-family:"Apple SD Gothic Neo","Noto Serif KR",serif;font-size:23px;line-height:1.5;margin-bottom:20px}
+.options{display:grid;gap:9px}
+.option{width:100%;padding:15px 14px;border:1px solid #302e30;border-radius:12px;background:#151517;color:#eee;text-align:left}
+.option.correct{border-color:#d8c3a5;background:#1d1915}
+.option.wrong{opacity:.4}
+.feedback{min-height:45px;padding-top:14px;color:#d8c3a5;font-size:13px;line-height:1.65}
+.time{font-size:60px;font-weight:300;letter-spacing:.06em;margin:20px 0}
+.date{font-size:13px;letter-spacing:.18em;color:#8e8983}
+.notice,.destination{margin-top:25px;padding:24px;border:1px solid #373435;border-radius:18px;background:#111113}
+.notice strong{font-family:"Apple SD Gothic Neo","Noto Serif KR",serif;font-size:20px;line-height:1.6}
+.place{font-family:"Apple SD Gothic Neo","Noto Serif KR",serif;font-size:29px;margin:8px 0 15px}
+.address{font-size:13px;color:#aaa;line-height:1.8}
+.pin{font-size:27px}
+.lock{width:80px;height:80px;border:1px solid #555;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 25px;font-size:27px}
+.footer{position:fixed;bottom:18px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:.18em;color:#4e4b48}
+@media(max-width:380px){h1{font-size:36px}h2{font-size:27px}.question{font-size:21px}.time{font-size:50px}}
+</style>
+</head>
+<body>
+
+<section class="screen active" id="screen0">
+<div class="inner">
+<div class="eyebrow">SPECIAL INVITATION</div>
+<h1>김지오의<br><span class="gold">프로포즈</span></h1>
+<p>진주님을 특별한 하루에 초대합니다.</p>
+<button type="button" class="btn" id="startBtn">초대장 열기</button>
+</div>
+<div class="footer">JIO × JINJU</div>
+</section>
+
+<section class="screen" id="screen1">
+<div class="inner">
+<div class="eyebrow">INVITATION</div>
+<h2>진주님, 초대장이 도착했습니다.</h2>
+<p>오늘은 평소와 조금 다른 날입니다.<br><br>지금부터 몇 가지 질문에 답해주세요.<br><br><b>모든 기억을 통과하면 프로포즈의 시작시간을 알려드리겠습니다.</b></p>
+<button type="button" class="btn" id="memoryStart">기억을 시작하기</button>
+</div>
+</section>
+
+<section class="screen" id="screen2">
+<div class="inner">
+<div class="progress">MEMORY QUIZ · 01</div><div class="eyebrow">OUR MEMORY</div>
+<div class="quiz-card">
+<div class="question">우리가 처음 함께 갔던 여행지는?</div>
+<div class="options">
+<button type="button" class="option">① 서울</button>
+<button type="button" class="option" data-correct="1">② 여수</button>
+<button type="button" class="option">③ 제주도</button>
+<button type="button" class="option">④ 경주</button>
+</div><div class="feedback"></div>
+</div></div></section>
+
+<section class="screen" id="screen3">
+<div class="inner">
+<div class="progress">MEMORY QUIZ · 02</div><div class="eyebrow">OUR MEMORY</div>
+<div class="quiz-card">
+<div class="question">우리가 사귀기로 한 날짜는?</div>
+<div class="options">
+<button type="button" class="option">① 1월 24일</button>
+<button type="button" class="option" data-correct="1">② 2월 4일</button>
+<button type="button" class="option">③ 2월 14일</button>
+<button type="button" class="option">④ 3월 4일</button>
+</div><div class="feedback"></div>
+</div></div></section>
+
+<section class="screen" id="screen4">
+<div class="inner">
+<div class="progress">MEMORY QUIZ · 03</div><div class="eyebrow">THE MOST IMPORTANT QUESTION</div>
+<div class="quiz-card">
+<div class="question">김지오가 좋은 이유는?</div>
+<div class="options">
+<button type="button" class="option">① 착해서</button>
+<button type="button" class="option">② 나를 잘 챙겨줘서</button>
+<button type="button" class="option">③ 같이 있으면 편해서</button>
+<button type="button" class="option" data-correct="1">④ 잘생겨서</button>
+</div><div class="feedback"></div>
+</div></div></section>
+
+<section class="screen" id="screen5">
+<div class="inner">
+<div class="eyebrow">MEMORY COMPLETE</div>
+<h2>모든 기억을<br>통과했습니다.</h2>
+<p>역시 진주는 나를 잘 아네요.<br><br>이제 프로포즈의 시작시간을 알려드리겠습니다.</p>
+<button type="button" class="btn" id="timeBtn">시간 확인하기</button>
+</div></section>
+
+<section class="screen" id="screen6">
+<div class="inner">
+<div class="eyebrow">THE TIME</div><h2>프로포즈의<br>시작시간</h2>
+<div class="date">2026. XX. XX.</div><div class="time">XX : XX</div>
+<p>오늘은 이 시간을 기억해주세요.<br>그리고 늦지 않게 준비해주세요.</p>
+<button type="button" class="btn" id="dressBtn">다음</button>
+</div></section>
+
+<section class="screen" id="screen7">
+<div class="inner">
+<div class="eyebrow">DRESS CODE</div><h2>잠깐.</h2>
+<div class="notice">
+<strong>아직 프로포즈에 참석할 준비가 되지 않았습니다.</strong>
+<p>지금 입고 있는 옷은 오늘의 일정과 어울리지 않을 가능성이 높습니다.</p>
+<p><b>프로포즈에 어울리는 옷으로 갈아입어 주세요.</b></p>
+<p style="font-size:12px;color:#999">천천히 예쁘게 준비해주세요.<br>준비가 끝났다면 다시 이 페이지로 돌아와주세요.</p>
+</div>
+<button type="button" class="btn" id="readyBtn">준비 완료</button>
+</div></section>
+
+<section class="screen" id="screen8">
+<div class="inner">
+<div class="eyebrow">DESTINATION</div><h2>오래 기다리셨습니다.</h2>
+<p>이제 오늘의 목적지를 공개합니다.</p>
+<div class="destination"><div class="pin">📍</div><div class="place">○○○</div><div class="address">주소<br>○○○○○○</div><p style="font-size:12px;color:#999">도착 예정 시간 · XX:XX</p></div>
+<button type="button" class="btn" id="mapBtn">지도에서 길찾기</button>
+<button type="button" class="btn" id="lastBtn">마지막으로</button>
+</div></section>
+
+<section class="screen" id="screen9">
+<div class="inner">
+<div class="lock">🔒</div><div class="eyebrow">LAST PAGE</div>
+<h2>아직 열리지 않았습니다.</h2>
+<p>이 페이지는<br><b>오늘 직접 만나야 열립니다.</b></p>
+<p style="font-size:13px;color:#999">여기까지 왔다면 이제 준비는 끝났습니다.<br><br>예쁘게 준비하고,<br>내가 알려준 시간에,<br>내가 알려준 장소로 와주세요.</p>
+<div class="gold" style="font-family:serif;font-size:20px;margin-top:24px">나머지는 내가 준비하겠습니다.</div>
+<p style="font-size:12px;color:#888">— 김지오</p>
+</div></section>
+
+<script>
+(function(){
+  "use strict";
+  var current = 0;
+  function show(n){
+    var old = document.getElementById("screen"+current);
+    var next = document.getElementById("screen"+n);
+    if(!next) return;
+    if(old) old.classList.remove("active");
+    next.classList.add("active");
+    current = n;
+    window.scrollTo(0,0);
+  }
+  document.getElementById("startBtn").onclick=function(){show(1)};
+  document.getElementById("memoryStart").onclick=function(){show(2)};
+  document.getElementById("timeBtn").onclick=function(){show(6)};
+  document.getElementById("dressBtn").onclick=function(){show(7)};
+  document.getElementById("readyBtn").onclick=function(){show(8)};
+  document.getElementById("lastBtn").onclick=function(){show(9)};
+  document.getElementById("mapBtn").onclick=function(){
+    // 실제 장소 확정 후 아래 주소를 원하는 지도 URL로 교체
+    alert("실제 장소가 정해지면 이 버튼에 지도 링크를 연결할 수 있습니다.");
+  };
+
+  var screens=[2,3,4];
+  screens.forEach(function(num){
+    var box=document.getElementById("screen"+num);
+    var buttons=box.querySelectorAll(".option");
+    var feedback=box.querySelector(".feedback");
+    buttons.forEach(function(btn){
+      btn.onclick=function(){
+        if(btn.disabled) return;
+        if(btn.getAttribute("data-correct")==="1"){
+          buttons.forEach(function(b){b.disabled=true});
+          btn.classList.add("correct");
+          if(num===2) feedback.textContent="정답. 역시 이건 기억하고 있네.";
+          if(num===3) feedback.textContent="정답. 2월 4일, 우리의 이야기가 시작된 날.";
+          if(num===4) feedback.textContent="정답. 다른 이유도 있겠지만… 아무튼 가장 중요한 이유는 잘생겨서인 걸로 하겠습니다.";
+          setTimeout(function(){show(num+1)},900);
+        }else{
+          btn.classList.add("wrong");
+          feedback.textContent="다시 생각해보세요. 우리 둘만 아는 기억입니다.";
+          btn.disabled=true;
+          setTimeout(function(){btn.classList.remove("wrong");btn.disabled=false;feedback.textContent=""},650);
+        }
+      };
+    });
+  });
+})();
+</script>
+</body>
+</html>
